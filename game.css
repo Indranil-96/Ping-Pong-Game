@@ -9,6 +9,7 @@
     height: 100vh;
     background-color: #000;
     overflow: hidden;
+    position: absolute;
 }
 
 
@@ -38,7 +39,7 @@
 }
 #paddle1{
     width: 2rem;
-    height: 6rem;
+    height: 8rem;
     background-color: olivedrab;
     position: absolute;
     border-radius: 5%;
@@ -50,7 +51,7 @@
 
 #paddle2{
     width: 2rem;
-    height: 6rem;
+    height: 8rem;
     background-color: blueviolet;
     position: absolute;
     border-radius: 5%;

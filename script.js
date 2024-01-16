@@ -50,25 +50,65 @@ function downHandeller(ev){
 }
 
 function movebar(){
-    if(wpressed && p1val>10){
-        p1val-=2;
+    if(wpressed && p1val>15){
+        p1val-=5;
         paddle1.style.top=p1val+"%";
     }
 
-    else if(spressed && p1val<90){
-        p1val+=2;
+    else if(spressed && p1val<85){
+        p1val+=5;
         paddle1.style.top=p1val+"%";
     }
 
-    else if(opressed && p2val>10){
-        p2val-=2;
+    else if(opressed && p2val>15){
+        p2val-=5;
         paddle2.style.top=p2val+"%";
     }
 
-    else if(lpressed && p2val<90){
-        p2val+=2;
+    else if(lpressed && p2val<85){
+        p2val+=5;
         paddle2.style.top=p2val+"%";
     }
     // requestAnimationFrame(movebar);
 }
 
+//Accourding to pythagoras theorem v^2=vx^2 + vy^2;
+
+let vx=-2;
+let vy=-15;
+let v= Math.sqrt(Math.pow(vx,2)+Math.pow(vy,2));
+
+
+const reset=()=>{
+    ball.style.top="50%";
+    ball.style.left="50%";
+    vx=-2;
+    vy=-15;
+    let v= Math.sqrt(Math.pow(vx,2)+Math.pow(vy,2));
+}
+
+function moveball(){
+    if(ball.offsetLeft<0){
+        // vx=-vx;
+        reset();
+    }
+
+    if(ball.offsetLeft>gamebox.offsetWidth-(ball.offsetWidth/2)){
+        vx=-vx;
+    }
+
+    if(ball.offsetTop<0){
+        vy=-vy;
+    }
+
+    if(ball.offsetTop>gamebox.offsetHeight-(ball.offsetHeight/2)){
+        vy=-vy;
+    }
+
+    ball.style.left=ball.offsetLeft+vx+"px";
+    ball.style.top=ball.offsetTop+vy+"px";
+
+    requestAnimationFrame(moveball);
+}
+
+moveball();
