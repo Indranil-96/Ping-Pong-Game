@@ -98,7 +98,7 @@ const checkCollition=(activePaddle)=>{
     }
 }
 function moveball(){
-    if(ball.offsetLeft<0){
+    if(ball.offsetLeft<-1){
         vx=-vx;
         // reset();
     }
@@ -131,8 +131,36 @@ function moveball(){
 
     let paddlecenterY=paddle.offsetTop+paddle.offsetHeight/2;
     let angle=0;
-    checkCollition(paddle)
 
+    if(checkCollition(paddle)){
+        if(paddle==user1){
+            if(ballcenterY<paddlecenterY){
+                angle=-Math.PI/4;
+            }
+            else if(ballcenterY>paddlecenterY){
+                angle=Math.PI/4;
+            }
+            else{
+                angle=0;
+            }
+        }
+        else if(paddle==user2){
+            if(ballcenterY<paddlecenterY){
+                angle=-3*Math.PI/4;
+            }
+            else if(ballcenterY>paddlecenterY){
+                angle=3*Math.PI/4;
+            }
+            else{
+                angle=0;
+            }
+        }
+
+        vx=v*Math.cos(angle);
+        vy=Math.sin(angle);
+    }
+
+    paddle2.style.top=paddle2.offsetTop+(ball.offsetTop-paddle2.offsetTop-paddle2.offsetHeight/2)+"px";
     requestAnimationFrame(moveball);
 }
 
