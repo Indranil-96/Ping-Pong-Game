@@ -87,18 +87,15 @@ const checkCollition=(activePaddle)=>{
     let paddlebottom=activePaddle.offsetTop+activePaddle.offsetHeight;
     let paddleright=activePaddle.offsetLeft+activePaddle.offsetWidth;
 
-    // console.log(balltop,ballbottom,ballleft,ballright);
-    // console.log(paddletop,paddlebottom,paddleleft,paddleright);
-
     if(ballbottom>paddletop && balltop<paddlebottom && ballright > paddleleft && ballleft<paddleright){
-        console.log(" Collison Detected"); // Something Wrong here.
+        console.log(" Collison Detected");
         return true;
     }else{
         return false;
     }
 }
 function moveball(){
-    if(ball.offsetLeft<-1){
+    if(ball.offsetLeft<gamebox.offsetLeft){
         vx=-vx;
         // reset();
     }
